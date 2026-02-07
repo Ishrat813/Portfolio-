@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishrat Nisa | Portfolio</title>
+
+  <!-- ======================
+       GOOGLE FONTS
+  ======================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ======================
+       ROOT VARIABLES
+  ======================= -->
+  <style>
+    :root {
+      --bg-main: #0a0f1f;
+      --bg-secondary: #0f162e;
+      --bg-card: #151c3b;
+      --accent: #22d3ee; /* cyan */
+      --accent-2: #a78bfa; /* violet */
+      --accent-soft: rgba(34,211,238,0.15);
+      --text-main: #eef2ff;
+      --text-muted: #a5b4fc;
+      --border-soft: rgba(255,255,255,0.1);
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow-soft: 0 25px 60px rgba(0,0,0,0.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #11162a, var(--bg-main));
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ======================
+       GLOBAL ELEMENTS
+    ======================= */
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      opacity: 0.85;
+    }
+
+    section {
+      padding: 120px 10%;
+      position: relative;
+    }
+
+    /* ======================
+       NAVBAR
+    ======================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 22px 10%;
+      background: rgba(11,13,19,0.75);
+      backdrop-filter: blur(18px);
+      z-index: 999;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    /* ======================
+       HERO SECTION
+    ======================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      padding-top: 160px;
+    }
+
+    .hero-text {
+      max-width: 620px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 30px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      margin: 30px 0 50px;
+      font-size: 1.05rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      gap: 18px;
+    }
+
+    .btn {
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8c95ff);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(108,124,255,0.35);
+    }
+
+    .btn-outline {
+      border-color: var(--border-soft);
+      color: var(--text-main);
+      background: transparent;
+    }
+
+    /* ======================
+       CARDS & GRID
+    ======================= */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 36px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--bg-card), var(--bg-secondary));
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(108,124,255,0.12), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* ======================
+       EXPERIENCE
+    ======================= */
+
+    .role {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 16px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ======================
+       SKILLS
+    ======================= */
+
+    .skill {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .bar {
+      width: 100%;
+      height: 8px;
+      background: #0f1324;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #9aa5ff);
+    }
+
+    /* ======================
+       CONTACT
+    ======================= */
+
+    .contact-box {
+      text-align: center;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .contact-box p {
+      margin-bottom: 30px;
+    }
+
+    /* ======================
+       FOOTER
+    ======================= */
+
+    footer {
+      padding: 60px 10%;
+      border-top: 1px solid var(--border-soft);
+      text-align: center;
+      background: #080a10;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    /* ======================
+       RESPONSIVE
+    ======================= */
+
+    @media (max-width: 900px) {
+      nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      section {
+        padding: 90px 6%;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+
+      .cta {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2.3rem; }
+      h2 { font-size: 1.8rem; }
+      p { font-size: 0.95rem; }
+      nav { padding: 18px 6%; }
+    }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <span class="badge">Social Media Manager & Designer</span>
+      <h1>Hi, I’m <span>Ishrat Nisa</span></h1>
+      <p class="hero-desc">
+        I design, manage, and scale digital brand presence through strategic
+        social media, strong visual identity, and professional video content.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-outline" href="#experience">View work</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="grid">
+      <div class="card">
+        <p>
+          I am a results‑focused <strong>Social Media Manager and Designer</strong>
+          with professional experience handling brand content, visuals, and video.
+          I currently work with <strong>TripVictor</strong> and have internship
+          experience at <strong>GenX24</strong>, where I supported digital operations
+          and marketing initiatives.
+        </p>
+        <p>
+          Alongside my professional work, I am pursuing a
+          <strong>BSc in Mathematics (2025–2028)</strong>. This background strengthens
+          my analytical thinking, data awareness, and structured problem‑solving—
+          skills I actively apply to content strategy and performance‑driven design.
+        </p>
+      </div>
+      <div class="card">
+        <h3>What I Focus On</h3>
+        <ul>
+          <li>Building consistent brand identity on social platforms</li>
+          <li>Creating visually engaging and scroll‑stopping content</li>
+          <li>Short‑form video editing for reach and engagement</li>
+          <li>Research‑based content and growth strategies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+    <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="role">Social Media Manager — TripVictor</div>
+        <p>
+          Responsible for managing and enhancing the brand’s digital presence
+          through strategic content planning and visual storytelling.
+        </p>
+        <ul>
+          <li>Planned monthly and weekly social media content calendars</li>
+          <li>Designed creatives aligned with brand tone and audience</li>
+          <li>Researched trends, hashtags, and competitor strategies</li>
+          <li>Improved consistency and engagement across platforms</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="role">Operation Intern — GenX24</div>
+        <p>
+          Supported operational and marketing teams with creative and research‑
+          driven contributions in a fast‑paced work environment.
+        </p>
+        <ul>
+          <li>Designed marketing posts and digital assets</li>
+          <li>Edited professional‑level videos for campaigns</li>
+          <li>Conducted content and market research</li>
+          <li>Collaborated with multiple teams on daily operations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills & Expertise</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Social Media & Strategy</h3>
+        <div class="skill"><span>Social Media Management</span><span>92%</span></div>
+        <div class="bar"><div class="fill" style="width:92%"></div></div><br>
+        <div class="skill"><span>Content Planning</span><span>90%</span></div>
+        <div class="bar"><div class="fill" style="width:90%"></div></div><br>
+        <div class="skill"><span>Trend & Hashtag Research</span><span>88%</span></div>
+        <div class="bar"><div class="fill" style="width:88%"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Design & Visuals</h3>
+        <div class="skill"><span>Graphic Design</span><span>86%</span></div>
+        <div class="bar"><div class="fill" style="width:86%"></div></div><br>
+        <div class="skill"><span>Brand Identity</span><span>82%</span></div>
+        <div class="bar"><div class="fill" style="width:82%"></div></div><br>
+        <div class="skill"><span>UI / Dark Theme Design</span><span>80%</span></div>
+        <div class="bar"><div class="fill" style="width:80%"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Video & Media</h3>
+        <div class="skill"><span>Advanced Video Editing</span><span>88%</span></div>
+        <div class="bar"><div class="fill" style="width:88%"></div></div><br>
+        <div class="skill"><span>Short‑Form Content (Reels)</span><span>90%</span></div>
+        <div class="bar"><div class="fill" style="width:90%"></div></div><br>
+        <div class="skill"><span>Visual Storytelling</span><span>85%</span></div>
+        <div class="bar"><div class="fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="card">
+        <h3>Web Development</h3>
+        <div class="skill"><span>HTML5</span><span>85%</span></div>
+        <div class="bar"><div class="fill" style="width:85%"></div></div><br>
+        <div class="skill"><span>CSS3 (Flexbox & Grid)</span><span>82%</span></div>
+        <div class="bar"><div class="fill" style="width:82%"></div></div><br>
+        <div class="skill"><span>Responsive Web Design</span><span>88%</span></div>
+        <div class="bar"><div class="fill" style="width:88%"></div></div><br>
+        <div class="skill"><span>Landing Pages & Webpages</span><span>84%</span></div>
+        <div class="bar"><div class="fill" style="width:84%"></div></div><br>
+        <div class="skill"><span>Basic GitHub Workflow</span><span>75%</span></div>
+        </div>
+        <br>
+        
+        <br>
+        
+        </div>
+    </div>
+  </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+    <h2>What I Do</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Social Media Management</h3>
+        <p>
+          End-to-end management including content planning, posting schedules,
+          visual creation, trend research, and engagement-focused strategies
+          to build a strong and consistent brand presence.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Graphic Design</h3>
+        <p>
+          Modern, clean, and dark-theme focused designs for social media,
+          marketing campaigns, and digital branding that align with business goals.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Video Editing</h3>
+        <p>
+          Advanced video editing for reels, shorts, and promotional videos
+          with strong storytelling, smooth transitions, and platform-optimized formats.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>
+          I design and develop <strong>responsive websites and webpages</strong>
+          using HTML and CSS, ensuring clean layouts, mobile-first design,
+          and consistent user experience across all devices.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Contact</h2>
+      <p>
+        ishratnisa@outlook.com<br>
+        ishratnisa1308@gmail.com<br><br>
+        <a href="https://github.com/Ishrat813">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/ishrat-nisa-358664365">LinkedIn</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Ishrat Nisa — Designed with precision & purpose</p>
+  </footer>
+
+</body>
+</html>
+
+
+
+
